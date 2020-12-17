@@ -2,8 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from numpy import nan, inf
 
-#plot results for experiment7_1
-#rewards are feasible in that all start states end up at goal within 25 steps
+#Code to evaluate the performance of Bayesian REX vs. Bayesian IRL when both get suboptimal ranked demos and when we use 
+# Bayesian IRL from critiques (https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8460854) a method that can learn from good and bad demonstrations.
+
+#This script will compile data for Table 9 in https://arxiv.org/pdf/2002.09089.pdf
 
 sample_flag = 4
 chain_length = 5000
@@ -12,13 +14,13 @@ alpha = 50
 size = 9
 num_reps = 100
 rolloutLength = 20
-numDemo = 20 #don't worry about one demos since ranking needs at least two!!
+numDemo = 20
 top_ks = [0.05, 0.1, 0.25, 0.5]
 stochastic = 0
 
 
 
-filePath = "data/brex_gridworld_ranked_yuchen/"
+filePath = "data/brex_gridworld_ranked_goodbad/"
 
 
 
@@ -46,15 +48,29 @@ for top_k in top_ks:
     birl_ave_plosses.append(np.mean(birl_plosses))
     brex_ave_plosses.append(np.mean(brex_plosses))
 
-print("Yuchen Suboptimal Ranked Bayesian IRL vs. Suboptimal Ranked Bayesian REX")
+print("Critique Bayesian IRL vs. Suboptimal Ranked Bayesian REX")
 for i,d in enumerate(top_ks):
     print("Demos = 20 top/bottom% = {}, BIRL Ploss = {:.3f}  BREX Ploss {:.3f}".format(d*100, birl_ave_plosses[i], brex_ave_plosses[i]))
 
-percentage_improvements = []
+#print out as a table
+print("Table")
+print("percentage of ranked demos to use as good/bad")
+print_str = ""
 for i,d in enumerate(top_ks):
-    percentage_improvements.append((brex_ave_plosses[i] - birl_ave_plosses[i]) / birl_ave_plosses[i])
+        print_str += "& {}".format(d)
+print(print_str + "\\\\")
 
-print("ave percentage improvement")
-print(np.mean(percentage_improvements))
 
+
+print_str = ""
+print_str += "B-IRL "
+for i,d in enumerate(top_ks):
+        print_str += "& {:.3f}".format(birl_ave_plosses[i])
+print(print_str + "\\\\")
+
+print_str = ""
+print_str += "B-REX "
+for i,d in enumerate(top_ks):
+        print_str += "& {:.3f}".format(brex_ave_plosses[i])
+print(print_str + "\\\\")
 

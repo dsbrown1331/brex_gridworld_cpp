@@ -25,7 +25,7 @@ int main()
 
     ////Experiment parameters
     const unsigned int reps = 100;                    //repetitions per setting
-    const vector<unsigned int> numDemos = {20};            //number of demos to give
+    const unsigned int numDemo = 20;            //number of demos to give
     const vector<unsigned int> rolloutLengths = {20};          //max length of each demo
     const vector<double> alphas = {50}; //50                    //confidence param for BIRL
     const unsigned int chain_length = 5000;//1000;//5000;        //length of MCMC chain
@@ -39,7 +39,7 @@ int main()
     bool stochastic = false;
     int burn = (int) 0.1 * chain_length;
     int skip = 5;
-    double top_k = 0.05;
+    const vector<double> top_ks = {0.05, 0.1, 0.25, 0.5};
 
     int startSeed = 132;
     double eps = 0.001;
@@ -60,7 +60,7 @@ int main()
     
     
     //create directory for results
-    string filePath = "./data/brex_gridworld_ranked_yuchen/";
+    string filePath = "./data/brex_gridworld_ranked_goodbad/";
     string mkdirFilePath = "mkdir -p " + filePath;
     system(mkdirFilePath.c_str());
 
@@ -71,9 +71,9 @@ for(unsigned int rolloutLength : rolloutLengths)
     {
         cout << "======Alpha: " << alpha << "=====" << endl;
         //iterate over number of demonstrations
-        for(unsigned int numDemo : numDemos)
+        for(double top_k : top_ks)
         {
-            cout << "****Num Demos: " << numDemo << "****" << endl;
+            cout << "****Top : " << top_k * 100 << " Percent ****" << endl;
             //iterate over repetitions
         for(double step : steps)
         {
@@ -185,7 +185,7 @@ for(unsigned int rolloutLength : rolloutLengths)
                 for(pair<int,float> p : indexReturns)
                     cout << "index " << p.first << ", " << "return " << p.second << endl;
                 
-                //now it's sorted high to low so take the first 5 and the last 5 to run Yuchen's BIRL
+                //now it's sorted high to low so take the first 5 and the last 5 to run Cui and Niekum's BIRL
                 vector<vector<pair<unsigned int,unsigned int> > > good_trajectories; //used for yuchen birl
                 vector<vector<pair<unsigned int,unsigned int> > > bad_trajectories; //used for yuchen birl
                 int cnt = 0;

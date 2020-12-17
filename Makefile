@@ -10,14 +10,16 @@ all: birl_test feature_test mdp_test feature_birl_test conf_bound_test grid_expe
 gridworld_basic_exp: build/gridWorldBasicExperiment.o
 	$(CC) $(LFLAGS) build/gridWorldBasicExperiment.o  -o gridworld_basic_exp
 
+brex_gridworld_basic_exp_optsubopt: build/brex_gridWorldBasicExperimentOptSubopt.o
+	$(CC) $(LFLAGS) build/brex_gridWorldBasicExperimentOptSubopt.o  -o brex_gridworld_basic_exp_optsubopt
+
+
 brex_gridworld_basic_exp_goodbad: build/brex_gridWorldBasicExperimentGoodBad.o
 	$(CC) $(LFLAGS) build/brex_gridWorldBasicExperimentGoodBad.o  -o brex_gridworld_basic_exp_goodbad
 
-brex_gridworld_basic_exp: build/brex_gridWorldBasicExperiment.o
-	$(CC) $(LFLAGS) build/brex_gridWorldBasicExperiment.o  -o brex_gridworld_basic_exp
+brex_gridworld_basic_exp_ranked: build/brex_gridWorldBasicExperimentRanked.o
+	$(CC) $(LFLAGS) build/brex_gridWorldBasicExperimentRanked.o  -o brex_gridworld_basic_exp_ranked
 	
-brex_gridworld_basic_exp_optsubopt: build/brex_gridWorldBasicExperimentOptSubopt.o
-	$(CC) $(LFLAGS) build/brex_gridWorldBasicExperimentOptSubopt.o  -o brex_gridworld_basic_exp_optsubopt
 
 brex_gridworld_basic_exp_optnoise: build/brex_gridWorldBasicExperimentOptNoise.o
 	$(CC) $(LFLAGS) build/brex_gridWorldBasicExperimentOptNoise.o  -o brex_gridworld_basic_exp_optnoise
@@ -43,8 +45,8 @@ build/brex_gridWorldBasicExperimentOptNoise.o: src/brex_gridWorldBasicExperiment
 build/brex_gridWorldBasicExperimentGoodBad.o: src/brex_gridWorldBasicExperimentGoodBad.cpp include/mdp.hpp include/confidence_bounds.hpp include/feature_birl.hpp include/grid_domains.hpp include/unit_norm_sampling.hpp include/feature_brex.hpp
 	$(CC) $(CFLAGS) src/brex_gridWorldBasicExperimentGoodBad.cpp -o build/brex_gridWorldBasicExperimentGoodBad.o
 
-build/brex_gridWorldBasicExperiment.o: src/brex_gridWorldBasicExperiment.cpp include/mdp.hpp include/confidence_bounds.hpp include/feature_birl.hpp include/grid_domains.hpp include/unit_norm_sampling.hpp include/feature_brex.hpp
-	$(CC) $(CFLAGS) src/brex_gridWorldBasicExperiment.cpp -o build/brex_gridWorldBasicExperiment.o
+build/brex_gridWorldBasicExperimentRanked.o: src/brex_gridWorldBasicExperimentRanked.cpp include/mdp.hpp include/confidence_bounds.hpp include/feature_birl.hpp include/grid_domains.hpp include/unit_norm_sampling.hpp include/feature_brex.hpp
+	$(CC) $(CFLAGS) src/brex_gridWorldBasicExperimentRanked.cpp -o build/brex_gridWorldBasicExperimentRanked.o
 
 build/brex_test.o: src/brex_test.cpp include/mdp.hpp include/confidence_bounds.hpp include/feature_brex.hpp include/grid_domains.hpp include/unit_norm_sampling.hpp
 	$(CC) $(CFLAGS) src/brex_test.cpp -o build/brex_test.o

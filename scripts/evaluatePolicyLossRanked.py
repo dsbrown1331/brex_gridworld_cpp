@@ -2,8 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from numpy import nan, inf
 
-#plot results for experiment7_1
-#rewards are feasible in that all start states end up at goal within 25 steps
+#Code to evaluate the performance of Bayesian REX vs. Bayesian IRL when both get suboptimal ranked demos 
+
+#This script will compile data for Table 8 in https://arxiv.org/pdf/2002.09089.pdf
 
 sample_flag = 4
 chain_length = 5000
@@ -12,7 +13,7 @@ alpha = 50
 size = 9
 num_reps = 100
 rolloutLength = 20
-numDemos = [2,5,10,20,30] #don't worry about one demos since ranking needs at least two!!
+numDemos = [2,5,10,20,30]
 stochastic = 0
 
 
