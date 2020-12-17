@@ -9,7 +9,7 @@ Daniel S. Brown, Russell Coleman, Ravi Srinivasan, Scott Niekum
 
 
 
-This repository contains code used to conduct the gridworld experiments reported in the paper "Safe Imitation Learning via Fast Bayesian Reward Inference from Preferences" published at ICML 2020. 
+This repository mainly contains the C++ code used to conduct the gridworld experiments reported in the paper "Safe Imitation Learning via Fast Bayesian Reward Inference from Preferences" published at ICML 2020. There is also a simple piece of starter code for running Bayesian REX MCMC in python, given feature counts and preferences, but this only gives the reward function distribution and doesn't perform any MDP optimization.
 
 If you are interested in the Atari experiments reported in the Appendix, please see this repo [bayesianrex](https://github.com/dsbrown1331/bayesianrex).
 
@@ -35,6 +35,11 @@ Note that this code repository is designed to test the final performance of Baye
   - `cd brex_gridworld_cpp`
   - `mkdir build`
   
+
+## Python basic implementation of Bayesian REX
+See `python/bayesianREX_basic.py` for an example of how to run Bayesian REX via python. The code is a trimmed down version of the Atari code and could be adapted to work with any MDP where you have preferences over demonstrations. This code requires numpy and PyTorch.
+
+The remainder of this repo discusses the C++ version of Bayesian REX.
  
 ## B-REX vs BIRL Ranked Suboptimal vs. Optimal Demonstrations
 In this experiment we give the best kind of demonstration to each algorithm: ranked demos to Bayesian REX and optimal demos to Bayesian IRL. Given the same number of demos we investigate how they perform.
