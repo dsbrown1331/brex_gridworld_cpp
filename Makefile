@@ -18,7 +18,7 @@ brex_gridworld_basic_exp_goodbad: build/brex_gridWorldBasicExperimentGoodBad.o
 	$(CC) $(LFLAGS) build/brex_gridWorldBasicExperimentGoodBad.o  -o brex_gridworld_basic_exp_goodbad
 
 brex_gridworld_basic_exp_ranked: build/brex_gridWorldBasicExperimentRanked.o
-	$(CC) $(LFLAGS) build/brex_gridWorldBasicExperimentRanked.o  -o brex_gridworld_basic_exp_ranked
+	$(CC) $(LFLAGS) build/brex_gridWorldBasicExperimentRanked.o  -o brex_gridworld_basic_exp
 	
 
 brex_gridworld_basic_exp_optnoise: build/brex_gridWorldBasicExperimentOptNoise.o

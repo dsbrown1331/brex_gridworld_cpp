@@ -8,16 +8,10 @@ Daniel S. Brown, Russell Coleman, Ravi Srinivasan, Scott Niekum
 </p>
 
 
-Bayesian REX pipeline:
-<p align=center>
-  <img src='assets/BREXslide.png' width=1000>
-</p>
 
+This repository contains code used to conduct the gridworld experiments reported in the paper "Safe Imitation Learning via Fast Bayesian Reward Inference from Preferences" published at ICML 2020. 
 
-
-This repository contains code used to conduct the Atari experiments reported in the paper "Safe Imitation Learning via Fast Bayesian Reward Inference from Preferences" published at ICML 2020. 
-
-If you are interested in the gridworld experiments reported in the Appendix, please see this repo [brex_gridworld_cpp](https://github.com/dsbrown1331/brex_gridworld_cpp).
+If you are interested in the Atari experiments reported in the Appendix, please see this repo [bayesianrex](https://github.com/dsbrown1331/bayesianrex).
 
 If you find this repository is useful in your research, please cite the paper:
 ```
@@ -32,16 +26,14 @@ If you find this repository is useful in your research, please cite the paper:
 
 
 
-
-# brex_gridworld_cpp
-Implementation of Bayesian REX for gridworld experiments in ICML 2020 paper.
-
 Note that this code repository is designed to test the final performance of Bayesian REX and Bayesian IRL, but has not been optimized for memory management or speed. 
 
 
   
-  #### Getting started
-  - Make a build directory: `mkdir build`
+  ### Getting started
+  - `git clone https://github.com/dsbrown1331/brex_gridworld_cpp.git`
+  - `cd brex_gridworld_cpp`
+  - `mkdir build`
   
  
 ## B-REX vs BIRL Ranked Suboptimal vs. Optimal Demonstrations
